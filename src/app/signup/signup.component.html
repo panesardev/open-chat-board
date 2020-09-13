@@ -1,0 +1,19 @@
+<section>
+	<h1 class="center blue mb-3">Sign up to get started</h1>
+	<form (submit)="signup()" ngNativeValidate>
+		<div class="mb-3 input-box" *ngIf="signupError">
+			<label class="error center red px-3 py-1">Invalid credentials</label>
+		</div>
+		<div class="mb-3 input-box">
+			<label for="username">Enter username <br> <input type="text" [(ngModel)]="signupUser.username" name="username" autocomplete="on"></label>
+		</div>
+		<div class="mb-3 input-box">
+			<label for="username">Enter password <br> <input type="password" [(ngModel)]="signupUser.password" name="password" autocomplete="on"></label> 	
+		</div>
+		<div class="mb-3 input-box">
+			<a routerLink="/" role="button" class="blue pr-3 py-1">Login instead</a>
+			<button type="reset" class="btn-light red px-3 py-1 mr-3">Reset</button>
+			<button type="submit" class="btn-blue px-3 py-1">Sign up</button>
+		</div>
+	</form>
+</section>

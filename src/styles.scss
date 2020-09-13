@@ -1,1 +1,125 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'assets/css/bootstrap.grid.css';
+@import 'assets/css/bootstrap.utilities.css';
+
+:root {
+	--red: #f5315b;
+	--hvr-red: #cf2c50;
+	--light-red: #f5315b17;
+
+	--green: #33d370;
+	--hvr-green: #30c268;
+	--light-green: #33d37017;
+
+	--blue: #2293F4;
+	--hvr-blue: #1f85df;
+	--light-blue: #2293F417;
+	
+	--teal: #42cfd1;
+	--hvr-teal: #40c0c2;
+	--light-teal: #0adbdf17;
+
+	--grey: #4d5d66;
+	--light: #F7FAFC;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'open sans';
+	background-color: var(--light);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+button:hover, a:hover {
+	cursor: pointer;
+}
+
+div.bg {
+	background-color: white;
+	box-shadow: 0 0 10px rgba(227, 231, 235, 0.788);
+	border-radius: 5px;
+}
+
+.text { color: var(--grey); }
+.red { color: var(--red); }
+.green { color: var(--green); }
+.blue { color: var(--blue); }
+.teal { color: var(--teal); }
+.light { color: var(--light); }
+
+.bg-light { background-color: var(--light); }
+.bg-red { background-color: var(--red); }
+.bg-blue { background-color: var(--blue); }
+.bg-green { background-color: var(--green); }
+.bg-teal { background-color: var(--teal); }
+.bg-none { background-color: transparent; }
+
+.center { text-align: center; }
+.left {	text-align: left; }
+.right { text-align: right; }
+
+input {
+	border-radius: 3px;
+	border: .1rem solid transparent;
+	outline: none;
+	transition: .2s;
+	color: var(--grey);
+	padding: .3rem .8rem;
+	background-color: rgb(237, 241, 245);
+	box-shadow: 0 0 10px var(--light);
+}
+
+button {
+	border-radius: 3px;
+	border: none;
+	transition: .2s;
+	outline: none;
+	color: var(--light);
+	box-shadow: 0 0 10px var(--light);
+	
+	&.btn-light {
+		background-color: rgb(237, 241, 245);
+	}
+	&.btn-light:hover {		
+		background-color: rgb(228, 233, 238);
+	}
+	
+	&.btn-red {
+		background-color: var(--red);
+	}
+	&.btn-red:hover {		
+		background-color: var(--hvr-red);
+	}
+	
+	&.btn-blue {
+		background-color: var(--blue);
+	}
+	&.btn-blue:hover {		
+		background-color: var(--hvr-blue);
+	}
+	
+	&.btn-green {
+		background-color: var(--green);
+	}
+	&.btn-green:hover {		
+		background-color: var(--hvr-green);
+	}
+	
+	&.btn-teal {
+		background-color: var(--teal);
+	}
+	&.btn-teal:hover {		
+		background-color: var(--hvr-teal);
+	}
+}
+
+.hvr-pointer:hover {
+	cursor: pointer;
+}

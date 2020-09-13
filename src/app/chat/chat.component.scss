@@ -1,0 +1,42 @@
+form input[name="input"] {
+	width: 90%;
+}
+form button[type="submit"] {
+	width: 10%;
+	font-size: 1.25rem;
+}
+
+.red-border {
+	border: .1rem solid var(--red);
+}
+
+#chat-container, #main, #sidebar {
+	height: 570px;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent; 
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--teal); 
+	border-radius: 30px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: var(--hvr-teal); 
+}
+
+.b-bottom {
+	border-bottom: .1rem solid rgb(227, 232, 236);
+}

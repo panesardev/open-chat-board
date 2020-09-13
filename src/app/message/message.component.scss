@@ -1,0 +1,51 @@
+.message {
+	border-radius: 3px;
+	padding: .2rem .5rem;
+	&.it-not-me {
+		background-color: var(--light-teal);
+	}
+	&.it-me {
+		background-color: var(--teal);
+	}
+	&.it-me .username {
+		color: white;
+	} 
+	&.it-not-me .username {
+		color: var(--teal);
+	} 
+	&.it-me .text {
+		color: var(--light);
+		text-align: right;
+	}
+	&.it-me + .date {
+		text-align: right;
+	}
+	&.it-not-me + .date {
+		text-align: left;
+	}
+}
+
+.text {
+	word-break: break-all;
+}
+
+.date {
+	font-size: .8rem;
+}
+
+.username:hover {
+	color: var(--blue);
+}
+
+.join {
+	background-color: var(--light-blue);
+}
+
+.left {
+	background-color: var(--light-red);
+}
+
+.join, .left {
+	border-radius: 50px;
+	font-family: 'nunito';
+}
