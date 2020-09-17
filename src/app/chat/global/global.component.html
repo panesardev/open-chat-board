@@ -1,0 +1,36 @@
+<div class="col-md-4 mt-3">
+	<div class="pb-3 pt-2 bg">
+		<button *ngIf="globalChat; else wantToJoin" class="float-right px-2 py-1 btn-red mr-2" (click)="leave()">Leave</button>
+		<ng-template #wantToJoin>
+			<button class="float-right px-2 py-1 btn-teal mr-2" (click)="join()">Join</button>
+		</ng-template>
+		
+		<h2 class="teal px-3 pb-1 b-bottom" style="font-family: 'nunito';">Global Chat</h2>
+		
+		<div id="chat-container" class="px-2 pb-2 pt-0">
+			<div *ngIf="globalChat; else noGlobalChat">
+				<div *ngFor="let message of messages">
+					<message [message]="message" [me]="user.username === message.username"></message>
+				</div>
+			</div>
+			<ng-template #noGlobalChat>
+				<div style="font-family: 'nunito';" class="mt-5 center">
+					<p>Join Global to receive messages!</p>
+				</div>
+			</ng-template>
+		</div>
+		
+		<form (submit)="send()" ngNativeValidate class="px-3 mt-3" *ngIf="globalChat">
+
+			<input type="text"
+			name="input"
+			placeholder="Enter your message . . ." 
+			autocomplete="off"
+			[class.red-border]="showRedBorder" 
+			(keyup)="scroll()"
+			[(ngModel)]="input">
+			
+			<button class="bg-none teal pl-2" type="submit"><i class="fas fa-share"></i></button>
+		</form>
+	</div>
+</div>

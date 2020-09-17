@@ -14,6 +14,10 @@ import { SocketService } from './services/socket.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { SignupComponent } from './signup/signup.component';
 import { LoadingComponent } from './loading/loading.component';
+import { GlobalComponent } from './chat/global/global.component';
+import { SidebarComponent } from './chat/sidebar/sidebar.component';
+import { PersonalComponent } from './chat/personal/personal.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
 	declarations: [
@@ -23,6 +27,10 @@ import { LoadingComponent } from './loading/loading.component';
 		MessageComponent,
 		SignupComponent,
 		LoadingComponent,
+		GlobalComponent,
+		SidebarComponent,
+		PersonalComponent,
+		ProfileComponent,
 	],
 	imports: [
 		BrowserModule,

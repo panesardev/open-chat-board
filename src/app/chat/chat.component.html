@@ -1,45 +1,7 @@
 <section>
 	<div class="row">
-		<!-- Sidebar -->
-		<div class="col-md-4 mt-3">
-			<div class="pb-3 pt-2 bg">
-				
-				<h2 class="teal hvr-pointer px-3 pb-1 b-bottom center" 
-				style="font-family: 'nunito';"
-				routerLink="/">
-					Open Chat Board
-				</h2>
-
-				<div id="sidebar">
-					<p class="username blue" style="font-family: 'nunito';">@{{ user.username }}</p>
-				</div>
-			</div>
-		</div>
-		<!-- Main -->
-		<div class="col-md-4 mt-3">
-			<div class="pb-3 pt-2 bg">
-				<h2 class="teal px-3 pb-1 b-bottom center" style="font-family: 'nunito';">Main</h2>
-				<div id="main">
-					
-				</div>
-			</div>
-		</div>
-		<!-- Global -->
-		<div class="col-md-4 mt-3">
-			<div class="pb-3 pt-2 bg">
-				<h2 class="teal px-3 pb-1 b-bottom center" style="font-family: 'nunito';">Global Chat</h2>
-				
-				<div id="chat-container" class="px-2 pb-2 pt-0">
-					<div *ngFor="let message of messages">
-						<message [message]="message" [me]="user.username === message.username"></message>
-					</div>
-				</div>
-				
-				<form (submit)="send()" ngNativeValidate class="px-3 mt-3">
-					<input [class.red-border]="showRedBorder" (keyup)="scroll()" type="text" [(ngModel)]="input" name="input" placeholder="Enter your message . . ." autocomplete="off">
-					<button class="bg-none teal pl-2" type="submit"><i class="fas fa-share"></i></button>
-				</form>
-			</div>
-		</div>
+		<sidebar [user]="user"></sidebar>
+		<personal [user]="user"></personal>
+		<global [user]="user"></global>
 	</div>
 </section>

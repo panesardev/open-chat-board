@@ -7,11 +7,11 @@
 			</div>
 		</div>
 		<div class="col-md-5">
-			<div *ngIf="loading; else show" style="margin-top: 200px;">
-				<loading></loading>
-			</div>
-			<ng-template #show>
-				<div class="bg py-5">
+			<div class="bg py-5">
+				<div *ngIf="loading; else show" style="margin-top: 200px;">
+					<loading></loading>
+				</div>
+				<ng-template #show>
 					<div id="login" class="mt-0 mt-sm-5 pt-0 pt-sm-3">
 						<h1 class="center blue mb-3">Login to the dashboard</h1>
 						<form (submit)="login()" ngNativeValidate>
@@ -31,8 +31,8 @@
 							</div>
 						</form>
 					</div>
-				</div>
-			</ng-template>
+				</ng-template>
+			</div>
 		</div>
 	</div>
 
