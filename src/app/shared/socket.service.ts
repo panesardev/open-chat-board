@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
-import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
-import { Message } from '../interfaces/message.interface';
+import { environment } from '../../environments/environment';
+import { Observable, Observer } from 'rxjs';
+import { Message } from './message.interface';
 import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
@@ -32,7 +32,7 @@ export class SocketService {
 	}
 
 	receiveGlobal(): Observable<Message> {
-		return Observable.create(observer => {
+		return new Observable((observer: Observer<Message>) => {
 			this.client.on('toClient', (message: Message) => {
 			  	observer.next(message);
 			});

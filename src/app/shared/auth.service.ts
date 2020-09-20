@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces/user.interface';
+import { User } from './user.interface';
 import { HttpClient } from '@angular/common/http';
-import { JwtDto } from '../interfaces/jwt.dto';
+import { JwtDto } from './jwt.dto';
 import * as moment from 'moment';
 import { environment as env } from '../../environments/environment';
 
@@ -13,8 +13,7 @@ export class AuthService {
 	constructor(private http: HttpClient) {}
 
 	async signUp(user: User) {
-		this.http.post<User>(`${env.serverUrl}/user`, user);
-		await this.login(user.username, user.password);
+		return await this.http.post<User>(`${env.serverUrl}/user/new`, user).toPromise();
 	}
 
 	async login(username: string, password: string) {
@@ -27,7 +26,6 @@ export class AuthService {
 
 		const user = await this.http.get<User>(`${env.serverUrl}/user/${data.username}`).toPromise();
 		localStorage.user = JSON.stringify(user);
-
 		this.online = true;
 	}
 
@@ -36,9 +34,9 @@ export class AuthService {
 	}
 
 	getExpiration() {
-			const expiration = localStorage.getItem('expire');
-		 const expiresAt = JSON.parse(expiration);
-		 return moment(expiresAt);
+		const expiration = localStorage.getItem('expire');
+		const expiresAt = JSON.parse(expiration);
+		return moment(expiresAt);
 	}
 
 	logout(): void {

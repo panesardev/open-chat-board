@@ -1,7 +1,16 @@
 <section>
-	<div class="row">
-		<sidebar [user]="user"></sidebar>
-		<personal [user]="user"></personal>
-		<global [user]="user"></global>
+	<div>
+		<header></header>
+	</div>
+	<div class="row px-3 px-md-0">
+		<div class="col-md-8 mt-3">
+			<div class="row bg">
+				<sidebar [user]="user"></sidebar>
+				<personal [user]="user"></personal>
+			</div>
+		</div>
+		<div class="col-md-4 mt-3 px-0 px-md-3">
+			<global [user]="user"></global>
+		</div>
 	</div>
 </section>

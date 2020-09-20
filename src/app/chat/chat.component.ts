@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { User } from '../interfaces/user.interface';
+import { AuthService } from '../shared/auth.service';
+import { User } from '../shared/user.interface';
+import { ContactService } from '../shared/contact.service';
 
 @Component({
 	selector: 'chat',
@@ -11,10 +12,14 @@ export class ChatComponent implements OnInit {
 
 	user: User = {} as User;
 
-	constructor(private auth: AuthService) { }
+	constructor(
+		private auth: AuthService,
+		private contactService: ContactService
+	) { }
 
-	ngOnInit(): void {
+	async ngOnInit(): Promise<void> {
 		this.user = this.auth.user;
+		this.user.contacts = await this.contactService.getContacts();
 	}
 
 }

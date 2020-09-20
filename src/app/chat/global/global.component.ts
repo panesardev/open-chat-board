@@ -1,27 +1,27 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Message } from 'src/app/interfaces/message.interface';
-import { User } from 'src/app/interfaces/user.interface';
-import { AuthService } from 'src/app/services/auth.service';
-import { SocketService } from 'src/app/services/socket.service';
+import { Message } from 'src/app/shared/message.interface';
+import { User } from 'src/app/shared/user.interface';
+import { AuthService } from 'src/app/shared/auth.service';
+import { SocketService } from 'src/app/shared/socket.service';
 
 @Component({
 	selector: 'global',
 	templateUrl: './global.component.html',
-	styleUrls: ['../chat.component.scss']
+	styleUrls: ['../chat.component.scss', './global.component.scss']
 })
 export class GlobalComponent implements OnInit {
 
 	@Input() user: User;
 	messages: Message[] = [];
 	input: string;
-	
-	showRedBorder: boolean = false;
-	globalChat: boolean = true;
+
+	showRedBorder = false;
+	globalChat = true;
 
 	private subscription: Subscription;
-	
+
 	constructor(
 		private socket: SocketService,
 		private auth: AuthService,
@@ -35,18 +35,18 @@ export class GlobalComponent implements OnInit {
 				(message: Message) => this.messages.push(message),
 				(error) => console.log(error)
 			);
-		} else this.showLoggedOut();
+		} else { this.showLoggedOut(); }
 	}
 
 	send(): void {
 		if (this.auth.isLoggedIn) {
-			if (this.input) this.socket.sendGlobal(this.input);
-			else this.showRedBorder = true;
+			if (this.input) { this.socket.sendGlobal(this.input); }
+			else { this.showRedBorder = true; }
 		} else {
 			this.showLoggedOut();
 			this.input = '';
 		}
-		
+
 	}
 
 	@HostListener('window:beforeunload')

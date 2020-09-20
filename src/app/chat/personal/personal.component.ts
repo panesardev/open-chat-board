@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SocketService } from 'src/app/services/socket.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/interfaces/user.interface';
-import { Message } from '../../interfaces/message.interface';
+import { SocketService } from 'src/app/shared/socket.service';
+import { AuthService } from 'src/app/shared/auth.service';
+import { User } from 'src/app/shared/user.interface';
+import { Message } from '../../shared/message.interface';
 import { Router } from '@angular/router';
 
 @Component({
 	selector: 'personal',
 	templateUrl: './personal.component.html',
-	styleUrls: ['../chat.component.scss']
+	styleUrls: ['../chat.component.scss', './personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
 
@@ -16,7 +16,7 @@ export class PersonalComponent implements OnInit {
 	@Input() user: User;
 	messages: Message[] = [];
 
-	showRedBorder: boolean = false;
+	showRedBorder = false;
 
 	constructor(
 		private socket: SocketService,
@@ -25,16 +25,16 @@ export class PersonalComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
-
 	}
 
 	send(): void {
-		this.auth.isLoggedIn ?
-			this.input ?
-				this.socket.sendGlobal(this.input)
-			: this.showRedBorder = true
-		: this.showLoggedOut();
-		this.input = '';
+		if (this.auth.isLoggedIn) {
+			if (this.input) { this.socket.sendPersonal(this.input, ''); }
+			else { this.showRedBorder = true; }
+		} else {
+			this.showLoggedOut();
+			this.input = '';
+		}
 	}
 
 	showLoggedOut(): void {

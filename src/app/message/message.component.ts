@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '../interfaces/message.interface';
+import { Message } from '../shared/message.interface';
 
 @Component({
 	selector: 'message',

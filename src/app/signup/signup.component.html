@@ -1,19 +1,44 @@
-<section>
-	<h1 class="center blue mb-3">Sign up to get started</h1>
-	<form (submit)="signup()" ngNativeValidate>
-		<div class="mb-3 input-box" *ngIf="signupError">
-			<label class="error center red px-3 py-1">Invalid credentials</label>
+<section class="animate__animated animate__fadeInLeft animate__faster">
+	<h1 class="title center py-3">Open Chat Board</h1>
+	<div class="col-md-3"></div>
+	<div class="col-md-6 bg pt-4 pb-5">
+		<div *ngIf="loading; else show">
+			<loading></loading>
 		</div>
-		<div class="mb-3 input-box">
-			<label for="username">Enter username <br> <input type="text" [(ngModel)]="signupUser.username" name="username" autocomplete="on"></label>
-		</div>
-		<div class="mb-3 input-box">
-			<label for="username">Enter password <br> <input type="password" [(ngModel)]="signupUser.password" name="password" autocomplete="on"></label> 	
-		</div>
-		<div class="mb-3 input-box">
-			<a routerLink="/" role="button" class="blue pr-3 py-1">Login instead</a>
-			<button type="reset" class="btn-light red px-3 py-1 mr-3">Reset</button>
-			<button type="submit" class="btn-blue px-3 py-1">Sign up</button>
-		</div>
-	</form>
+		<ng-template #show>
+			<h1 class="center blue my-3">Sign up to get started</h1>
+			<form (submit)="signup()" ngNativeValidate>
+				<div *ngIf="passwordError;" class="mb-3 input-box">
+					<div>
+						<p>Your password must contain:</p>
+						<p>length between 6 to 20 characters</p>
+						<p>At least 1 uppercase</p>
+						<p>At least 1 lowercase</p>
+						<p>At least 1 number</p>
+					</div>
+				</div>
+				<div class="mb-3 input-box" *ngIf="signupError">
+					<label class="error center red px-3 py-1">Username is already taken</label>
+				</div>
+				<div class="mb-3 input-box">
+					<label for="firstName">Enter first name <br> <input type="text" [(ngModel)]="signupUser.firstName" name="firstName" autocomplete="on"></label>
+				</div>
+				<div class="mb-3 input-box">
+					<label for="lastName">Enter last name <br> <input type="text" [(ngModel)]="signupUser.lastName" name="lastName" autocomplete="on"></label>
+				</div>
+				<div class="mb-3 input-box">
+					<label for="username">Enter username <br> <input type="text" [(ngModel)]="signupUser.username" name="username" autocomplete="on"></label>
+				</div>
+				<div class="mb-3 input-box">
+					<label for="username">Enter password <br> <input type="password" [(ngModel)]="signupUser.password" name="password" autocomplete="on"></label> 	
+				</div>
+				<div class="mb-3 input-box">
+					<a routerLink="/" role="button" class="blue pr-3 py-1">Login instead</a>
+					<button type="reset" class="btn-light red px-3 py-1 mr-3">Reset</button>
+					<button type="submit" class="btn-blue px-3 py-1">Sign up</button>
+				</div>
+			</form>
+		</ng-template>
+	</div>
+	<div class="col-md-3"></div>
 </section>
