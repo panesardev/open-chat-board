@@ -23,6 +23,7 @@ import { ContactComponent } from './chat/contact/contact.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactService } from './shared/contact.service';
 import { AuthGuard } from './shared/auth.guard';
+import { ConversationComponent } from './chat/personal/conversation/conversation.component';
 
 @NgModule({
 	declarations: [
@@ -38,6 +39,7 @@ import { AuthGuard } from './shared/auth.guard';
 		ProfileComponent,
 		ContactComponent,
 		HeaderComponent,
+		ConversationComponent,
 	],
 	imports: [
 		BrowserModule,

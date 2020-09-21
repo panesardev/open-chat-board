@@ -11,7 +11,7 @@ export class ContactComponent implements OnInit {
 
 	@Input() contact: Contact;
 
-	show: boolean = false;
+	show = false;
 
 	constructor(private contactService: ContactService) { }
 
@@ -20,7 +20,7 @@ export class ContactComponent implements OnInit {
 
 	async delete(): Promise<void> {
 		const isDone = await this.contactService.delete(this.contact.id);
-		if (!isDone) alert('Failed to delete contact, try again.');
+		if (!isDone) { alert('Failed to delete contact, try again.'); }
 		window.location.reload();
 	}
 

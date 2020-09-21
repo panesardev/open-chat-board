@@ -8,8 +8,6 @@ import { AuthService } from './auth.service';
 @Injectable({ providedIn: 'root' })
 export class SocketService {
 
-	// explore the socket functions
-
 	private client: SocketIOClient.Socket;
 
 	constructor(private auth: AuthService) {
@@ -50,7 +48,7 @@ export class SocketService {
 	}
 
 	receivePersonal(): Observable<Message> {
-		return Observable.create(observer => {
+		return new Observable(observer => {
 			this.client.on('c2c', (message: Message) => {
 			  	observer.next(message);
 			});

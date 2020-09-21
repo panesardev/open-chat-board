@@ -12,17 +12,17 @@ import { ContactService } from 'src/app/shared/contact.service';
 export class SidebarComponent {
 
 	@Input() user: User;
-	viewAdd: boolean = false;
+	viewAdd = false;
 	contactName: string;
-	error: boolean = false;
-	youCantAddYou: boolean = false;
+	error = false;
+	youCantAddYou = false;
 
 	constructor(
 		private auth: AuthService,
 		private contactService: ContactService,
 		private router: Router
 	) { }
-	
+
 	async addContact(): Promise<void> {
 		try {
 			if (this.auth.user.username === this.contactName) {
@@ -39,7 +39,7 @@ export class SidebarComponent {
 	}
 
 	closeModal(event: any): void {
-		if (event.target !== event.currentTarget) return;
+		if (event.target !== event.currentTarget) { return; }
 		this.viewAdd = false;
 	}
 

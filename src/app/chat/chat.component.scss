@@ -10,7 +10,7 @@ form button[type="submit"] {
 	border: .1rem solid var(--red);
 }
 
-#chat-container, #main, #sidebar {
+#chat-container, #main {
 	height: 500px;
 	overflow-y: scroll;
 	scroll-behavior: smooth;

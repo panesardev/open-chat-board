@@ -12,11 +12,10 @@ import { Router } from '@angular/router';
 })
 export class PersonalComponent implements OnInit {
 
-	input: string;
 	@Input() user: User;
-	messages: Message[] = [];
 
-	showRedBorder = false;
+	receiver: User;
+
 
 	constructor(
 		private socket: SocketService,
@@ -27,19 +26,5 @@ export class PersonalComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	send(): void {
-		if (this.auth.isLoggedIn) {
-			if (this.input) { this.socket.sendPersonal(this.input, ''); }
-			else { this.showRedBorder = true; }
-		} else {
-			this.showLoggedOut();
-			this.input = '';
-		}
-	}
-
-	showLoggedOut(): void {
-		alert('You have been logged out. Please login again');
-		this.router.navigate(['/']);
-	}
 
 }

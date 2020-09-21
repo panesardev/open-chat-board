@@ -12,11 +12,11 @@ export class AuthService {
 
 	constructor(private http: HttpClient) {}
 
-	async signUp(user: User) {
+	async signUp(user: User): Promise<User> {
 		return await this.http.post<User>(`${env.serverUrl}/user/new`, user).toPromise();
 	}
 
-	async login(username: string, password: string) {
+	async login(username: string, password: string): Promise<void> {
 		const body = { username, password };
 		const data: JwtDto = await this.http.post<JwtDto>(`${env.serverUrl}/user/login`, body).toPromise();
 
@@ -29,11 +29,11 @@ export class AuthService {
 		this.online = true;
 	}
 
-	get isLoggedIn() {
+	get isLoggedIn(): boolean {
 		return moment().isBefore(this.getExpiration(), 'seconds');
 	}
 
-	getExpiration() {
+	getExpiration(): moment.Moment {
 		const expiration = localStorage.getItem('expire');
 		const expiresAt = JSON.parse(expiration);
 		return moment(expiresAt);
