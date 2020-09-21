@@ -41,6 +41,10 @@ button:hover, a:hover {
 	cursor: pointer;
 }
 
+a, a:hover {
+	color: var(--blue);
+}
+
 div.bg {
 	background-color: white;
 	box-shadow: 0 0 10px rgba(227, 231, 235, 0.788);

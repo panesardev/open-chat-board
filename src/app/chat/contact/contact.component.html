@@ -1,3 +1,7 @@
-<div>
-	<p class="blue">{{ contact.name }}</p>
+<div class="pl-1 mb-1">
+	<p>&raquo;&nbsp;&nbsp;<button class="px-2 blue bg-none contact" [innerText]="contact.name" (click)="show=!show"></button></p>
+	<div class="ml-3 p-1 mb-2" *ngIf="show">
+		<button class="px-3 btn-teal mb-1">Start Conversation</button> <br>
+		<button class="px-3 close red" (click)="delete()">Delete contact</button>
+	</div>
 </div>

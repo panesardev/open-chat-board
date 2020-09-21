@@ -1,0 +1,17 @@
+.contact:hover, .contact:focus {
+	background-color: var(--light-blue);
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+.contact {
+	box-shadow: none;
+}
+
+.close {	
+	background-color: var(--light-red);
+	&:hover {
+		color: var(--light);
+		background-color: var(--red);
+	}
+}

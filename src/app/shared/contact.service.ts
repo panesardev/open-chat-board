@@ -4,9 +4,7 @@ import { environment as env } from '../../environments/environment';
 import { Contact } from './contact.interface';
 import { AuthService } from './auth.service';
 
-@Injectable({
-	providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ContactService {
 
 	constructor(
@@ -21,6 +19,10 @@ export class ContactService {
 
 	async getContacts(): Promise<Contact[]> {
 		return await this.http.get<Contact[]>(`${env.serverUrl}/contact/${this.auth.user.id}`).toPromise();
+	}
+
+	async delete(id: string): Promise<boolean> {
+		return await this.http.delete<boolean>(`${env.serverUrl}/contact/${id}`).toPromise();
 	}
 
 }

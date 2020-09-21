@@ -1,13 +1,17 @@
 <section>
 	<div class="row">
 		<div class="col-md-7">
-			<div class="mt-5 mb-3 pt-0 pt-md-5">
+			<div class="center mt-5 mb-3 pt-0 pt-md-3 animate__animated animate__fadeInLeft animate__faster">
 				<h1 class="title">Welcome to OpenChatBoard</h1>
-				<p class="text">Open-World chat application</p>
+				<p class="text my-2">Open-World chat application</p>
+				<div class="mt-5">
+					<img src="assets/img/icon512.png" alt="icon" width="200">
+					<div class="mt-2">Icons made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-5">
-			<div class="bg py-5">
+			<div class="bg py-5 animate__animated animate__fadeInUp animate__faster">
 				<div *ngIf="loading; else show" style="margin-top: 200px;">
 					<loading></loading>
 				</div>
