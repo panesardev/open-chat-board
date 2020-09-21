@@ -41,7 +41,7 @@ button:hover, a:hover {
 	cursor: pointer;
 }
 
-a, a:hover {
+a, a:hover, a:focus {
 	color: var(--blue);
 }
 
