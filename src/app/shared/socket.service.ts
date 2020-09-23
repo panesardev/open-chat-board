@@ -25,7 +25,6 @@ export class SocketService {
 			type
 		};
 		this.client.emit('toServer', message);
-		console.log(this.client.id);
 		return true;
 	}
 
@@ -58,6 +57,18 @@ export class SocketService {
 	getTimestamp(): string {
 		const date: Date = new Date();
 		return `${date.getUTCHours()}:${date.getUTCMinutes()} UTC`;
+	}
+
+	register(): void {
+		this.client.emit('numberUsers', null);
+	}
+
+	count(): Observable<number> {
+		return new Observable(observer => {
+			this.client.on('count', (count: number) => {
+				observer.next(count);
+			});
+		});
 	}
 
 }

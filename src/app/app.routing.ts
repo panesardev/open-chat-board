@@ -4,12 +4,10 @@ import { HomeComponent } from './home/home.component';
 import { ChatComponent } from './chat/chat.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './shared/auth.guard';
-import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'dashboard', component: ChatComponent, canActivate: [AuthGuard] },
-	{ path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 	{ path: 'sign-up', component: SignupComponent },
 	{ path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];

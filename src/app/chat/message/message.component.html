@@ -1,0 +1,14 @@
+<div class="my-2">
+	<div *ngIf="message.type === 'default'">
+		<div class="message" [class]="me ? 'it-me' : 'it-not-me'">
+			<p><span class="text px-2">{{ message.text }}</span></p>
+		</div>
+		<p class="date mt-1"><span *ngIf="!me" class="blue username">@{{ message.username }} -</span> {{ message.date }}</p>
+	</div>
+	<div *ngIf="message.type === 'join'">
+		<p class="text center"><span class="join blue username px-3">@{{ message.username }} {{ message.text }}</span></p>
+	</div>
+	<div *ngIf="message.type === 'left'">
+		<p class="text center"><span class="left red username px-3">@{{ message.username }} {{ message.text }}</span></p>
+	</div>
+</div>

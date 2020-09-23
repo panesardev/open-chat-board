@@ -1,10 +1,9 @@
 .message {
 	border-radius: 3px;
-	padding: .2rem .5rem;
-	&.it-not-me {
+	&.it-not-me .text {
 		background-color: var(--light-teal);
 	}
-	&.it-me {
+	&.it-me .text {
 		background-color: var(--teal);
 	}
 	&.it-me .username {
@@ -13,9 +12,22 @@
 	&.it-not-me .username {
 		color: var(--teal);
 	} 
-	&.it-me .text {
+	&.it-me p {
 		color: var(--light);
 		text-align: right;
+	}
+	&.it-me p .text {
+		color: var(--light);
+		border-radius: 4px;
+		padding-top: 0.225rem;
+		padding-bottom: 0.225rem;
+	}
+	&.it-not-me p .text {
+		padding-top: 0.225rem;
+		padding-bottom: 0.225rem;
+		color: var(--text);
+		border-radius: 4px;
+		background-color: rgb(237, 241, 245);
 	}
 	&.it-me + .date {
 		text-align: right;

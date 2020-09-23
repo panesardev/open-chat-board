@@ -16,6 +16,7 @@ export class GlobalComponent implements OnInit {
 	@Input() user: User;
 	messages: Message[] = [];
 	input: string;
+	activeUsers: number;
 
 	showRedBorder = false;
 	globalChat = true;
@@ -30,6 +31,12 @@ export class GlobalComponent implements OnInit {
 
 	ngOnInit(): void {
 		if (this.auth.isLoggedIn) {
+			this.socket.register();
+			this.socket.count().subscribe(
+				(count: number) => this.activeUsers = count,
+				(error) => console.log(error)
+			);
+
 			this.socket.sendGlobal('Joined', true, false);
 			this.subscription = this.socket.receiveGlobal().subscribe(
 				(message: Message) => this.messages.push(message),
@@ -44,16 +51,15 @@ export class GlobalComponent implements OnInit {
 			else { this.showRedBorder = true; }
 		} else {
 			this.showLoggedOut();
-			this.input = '';
 		}
-
+		this.input = '';
 	}
 
 	@HostListener('window:beforeunload')
 	leave(): void {
 		if (this.globalChat) {
-			this.subscription.unsubscribe();
 			this.socket.sendGlobal('Left', false, true);
+			this.subscription.unsubscribe();
 			this.globalChat = false;
 		}
 	}

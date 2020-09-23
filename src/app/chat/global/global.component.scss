@@ -1,0 +1,15 @@
+.username {
+	font-size: 1.25rem;
+	font-family: 'nunito';
+	border-radius: 3px;
+	background-color: var(--light-blue);
+}
+
+.leave {
+	background-color: var(--light-red);
+}
+
+.leave:hover {
+	color: var(--light);
+	background-color: var(--red);
+}
